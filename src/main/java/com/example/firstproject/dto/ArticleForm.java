@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 
-@AllArgsConstructor
-@ToString
+@AllArgsConstructor // 생성자 생략가능
+@ToString // toString() 생성 생략가능
 public class ArticleForm {
 
     private Long id; // id field 추가
@@ -14,7 +14,7 @@ public class ArticleForm {
     private String title;
     private String content;
 
-    public Article toEntity() {
+    public Article toEntity() { // 여기있는 코드의 역할?
         return new Article(id, title, content);
 
 

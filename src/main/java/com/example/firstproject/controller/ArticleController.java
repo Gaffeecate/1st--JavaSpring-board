@@ -22,16 +22,15 @@ public class ArticleController {
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동완성
     private ArticleRepository articleRepository;
 
-
     @Autowired
     private CommentService commentService;
 
-    @GetMapping ("/articles/new")
+    @GetMapping ("/articles/new") // 글쓰는 페이지 반환해주는 메소드
     public String newArticleform() {
         return "articles/new";
     }
 
-    @PostMapping("/articles/create")
+    @PostMapping("/articles/create") // 글쓰는 페이지에서 실제로 글을 입력했을때 서버랑 디비에 글을 올려줘서 저장하는 역할하는 메소드
     public String createAction(ArticleForm form) {
         log.info(form.toString());
 //        System.out.println(form.toString()); -> 로깅기능으로 대체
@@ -50,10 +49,9 @@ public class ArticleController {
 
     }
 
-    @GetMapping("/articles/{id}")
+    @GetMapping("/articles/{id}") // 입력한 특정글 조회, 글에 댓글 여러개 달려있는거 같이 가져오는 역할을 함
     public String show(@PathVariable Long id, Model model) {
         log.info("id = " +id);
-
 
         // 1: id로 데이터를 가져옴!
         Article articleEntity = articleRepository.findById(id).orElse(null);
@@ -66,10 +64,11 @@ public class ArticleController {
         // 3: 보여줄 페이지를 설정!
         return "articles/show";
 
-        }
+    }
 
-    @GetMapping("/articles")
+    @GetMapping("/articles") // 글 전체 리스트를 보여줌. 이때 댓글은 안보여줘도 됨.
     public String index(Model model) {
+
         // 1: Article 묶음을 id를 이용하여 가져온다.
         List<Article> articleEntityList = (List<Article>) articleRepository.findAll();
 
@@ -80,7 +79,7 @@ public class ArticleController {
         return "articles/index";
     }
 
-    @GetMapping("/articles/{id}/edit")
+    @GetMapping("/articles/{id}/edit") // 글 편집하는 페이지를 가져옴
     public String edit(@PathVariable Long id, Model model) {
 
         //수정할 데이터를 가져오기
@@ -88,11 +87,12 @@ public class ArticleController {
 
         // 모델에 데이터를 등록!
         model.addAttribute("article", articleEntity);
+
         // 뷰페이지 설정
         return "articles/edit";
     }
 
-    @PostMapping("/articles/update")
+    @PostMapping("/articles/update") // 편집을 하고 완료버튼을 눌렀을때 다시 서버와 디비로 저장하는 역할을 함.
     public String update(ArticleForm form) {
         log.info(form.toString());
 
@@ -112,7 +112,7 @@ public class ArticleController {
         return "redirect:/articles/" + articleEntity.getId();
     }
 
-    @GetMapping ("/articles/{id}/delete")
+    @GetMapping ("/articles/{id}/delete") // 삭제버튼을 누르면 별도 페이지 생성이 필요 없으므로 위에처럼 페이지 호출 기능은 없음.
     public String delete(@PathVariable Long id, RedirectAttributes rttr) {
         log.info("삭제 요청이 들어왔습니다");
 

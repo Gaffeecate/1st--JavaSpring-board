@@ -24,16 +24,16 @@ public class CommentService {
 
     public List<CommentDto> comments(Long articleId) {
 
-//        //조회: 댓글 목록
-//        List<Comment> comments= commentRepository.findByArticleId(articleId);
-//
-//        //변환: 엔티티 -> dto
-//        List<CommentDto> dtos = new ArrayList<CommentDto>();
-//        for (int i = 0; i < comments.size(); i++) {
-//            Comment c = comments.get(i);
-//            CommentDto dto = CommentDto.createCommentDto(c);
-//            dtos.add(dto);
-//        }
+        //조회: 댓글 목록
+        List<Comment> comments= commentRepository.findByArticleId(articleId);
+
+        //변환: 엔티티 -> dto
+        List<CommentDto> dtos = new ArrayList<CommentDto>();
+        for (int i = 0; i < comments.size(); i++) {
+            Comment c = comments.get(i);
+            CommentDto dto = CommentDto.createCommentDto(c);
+            dtos.add(dto);
+        }
 
         //반환
         return commentRepository.findByArticleId((articleId))

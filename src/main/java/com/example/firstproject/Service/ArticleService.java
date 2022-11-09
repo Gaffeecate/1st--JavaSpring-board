@@ -31,9 +31,11 @@ public class ArticleService {
 
     public Article create(ArticleForm dto) {
         Article article = dto.toEntity();
-        if (article.getId() != null) {
-            return null;
-        }
+
+//        // 사용자가 전달해준 값에 아티클 아이디가 포함되어 있다면
+//        if (article.getId() != null) {
+//            return null;
+//        }
         return articleRepository.save(article);
     }
 
@@ -73,7 +75,8 @@ public class ArticleService {
     }
 
 
-     @Transactional// 해당 메소드를 트랜젝션을 묶는다. 메소드가 시행되기 전으로 롤백된다.
+    @Transactional// 해당 메소드를 트랜젝션을 묶는다. 메소드가 시행되기 전으로 롤백된다.
+
     public List<Article> createArticles(List<ArticleForm> dtos) {
         // dto 묶음을 entity 묶음으로 변환
         List<Article> articleList = dtos.stream()
@@ -83,10 +86,7 @@ public class ArticleService {
         articleList.stream()
                 .forEach(article -> articleRepository.save(article));
 
-        // 강제 예외 발생
-        articleRepository.findById(-1L).orElseThrow(
-                () -> new IllegalArgumentException("결제 실패!")
-        );
+
 
         // 결과값 반환
         return articleList;

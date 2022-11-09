@@ -16,7 +16,7 @@ public class ArticleApiController {
     @Autowired
     private ArticleService articleService;
 
-    // GETAr
+    // GET
     @GetMapping("/api/articles")
     public List<Article> index() {
         return articleService.index();
@@ -64,3 +64,4 @@ public class ArticleApiController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
+
