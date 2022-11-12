@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FirstprojectApplication {
 
 	public static void main(String[] args) {
-		int a = 3;
+		float a = 3;
 		double b = 4;
 		SpringApplication.run(Firstgit projectApplication.class, args);
 	}
