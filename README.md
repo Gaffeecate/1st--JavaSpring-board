@@ -1,11 +1,17 @@
-이 프로젝트는 제 최초 프로젝트입니다.
+## 1. 개발 의도
 
-글, 댓글, 대댓글 기능이 있는 게시판 프로젝트입니다. 
+이 프로젝트는 제 최초 프로젝트입니다. 자바 웹개발을 하기 위해서 책과 인터넷강의를 참조하여 만들었습니다. 
+
+## 2. 개발 기능
+
+글, 댓글, 대댓글 기능이 있는 웹 게시판 입니다.
+
+## 3. 향후 계획
 
 비전 프로젝트 마무리 이후 조금 더 기능이 덧붙여진 웹사이트로 리팩토링 할 예정입니다.
 
-VIEW: Mustache, BootStrap
-SERVER: SpringBoot
-BUILD: Maven 
+VIEW: Mustache, BootStrap,
+SERVER: SpringBoot,
+BUILD: Maven,
 
 
