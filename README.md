@@ -11,7 +11,7 @@
 비전 프로젝트 마무리 이후 조금 더 기능이 덧붙여진 웹사이트로 리팩토링 할 예정입니다.
 
 View: Mustache, BootStrap,  
-Server: SpringBoot, 
+Server: SpringBoot,  
 Build: Maven  
 
 
