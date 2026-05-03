@@ -8,7 +8,7 @@ public class FirstprojectApplication {
 	public static void main(String[] args) {
 		float a = 3;
 		double b = 4;
-		SpringApplication.run(Firstgit projectApplication.class, args);
+		SpringApplication.run(FirstprojectApplication.class, args);
 	}
 
 }

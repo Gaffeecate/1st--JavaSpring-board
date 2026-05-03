@@ -1,19 +1,31 @@
 {{>layouts/header}}
 
-{{#article}}
-    <form class="container" action="/articles/update" method="post">
-        <input name = "id" type="hidden" value = "{{id}}"/>
+<div class="mb-4">
+    {{#article}}
+    <a href="/articles/{{id}}" class="btn-back">&larr; Back to post</a>
+    {{/article}}
+</div>
+
+<h2 class="page-title">Edit Post</h2>
+
+<div class="card p-4">
+    {{#article}}
+    <form action="/articles/update" method="post">
+        <input name="id" type="hidden" value="{{id}}"/>
         <div class="mb-3">
-            <label class="form-label">제목</label>
+            <label class="form-label">Title</label>
             <input type="text" class="form-control" name="title" value="{{title}}">
         </div>
         <div class="mb-3">
-            <label class="form-label">내용</label>
-            <textarea class="form-control" rows="3" name="content">{{content}}</textarea>
+            <label class="form-label">Content</label>
+            <textarea class="form-control" rows="6" name="content">{{content}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="/articles/{{id}}">Back</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/articles/{{id}}" class="btn-back d-flex align-items-center">Cancel</a>
+        </div>
     </form>
-{{/article}}
+    {{/article}}
+</div>
 
 {{>layouts/footer}}
